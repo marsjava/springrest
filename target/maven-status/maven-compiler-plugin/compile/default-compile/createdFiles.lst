@@ -1,0 +1,9 @@
+com\springrest\config\AppConfig.class
+com\springrest\config\MyWebAppInitializer.class
+com\springrest\model\Book.class
+com\springrest\controller\BookController.class
+com\springrest\dao\BookDAO.class
+com\springrest\service\BookService.class
+com\springrest\config\WebConfig.class
+com\springrest\dao\BookDAOImpl.class
+com\springrest\service\BookServiceImpl.class

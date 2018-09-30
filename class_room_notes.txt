@@ -1,0 +1,67 @@
+Spring MVC 5 + Hibernate 5 + RESTful CRUD operations			
+-----------------------------------------------------------------------------------
+What is Rest?
+ REST stands for Representational State Transfer, which is an architecture style   for  designing distributed systems. 
+ A web service based on the REST architecture is referred as RESTful web services.
+
+RESTful service uses the following HTTP methods to map the HTTP request to CRUD operations.
+-----------------------------------------------------------------------------------
+HTTP Method	| CRUD operation	| Descriptions
+-----------------------------------------------------------------------------------
+POST		| Create		| Create the new resource [sql insert]
+GET		| Read			| Retrieve a resource [sql select] 
+PUT/PATCH	| Update		| Update or modify a resource [sql update]
+DELETE		| Delete		| Delete a resource [sql delete]
+-----------------------------------------------------------------------------------
+
+1.Create Model/Entity class under com.springrest.model package
+--
+creae a class with @Entity
+
+2. create Controller class under com.springrest.controller package
+--
+Create a @RestController class and annotate the handler methods with @PostMapping, @GetMapping, @PutMapping and @DeleteMapping annotations to map the POST, GET, PUT and DELETE and requests respectively.
+
+3. create DAO class com.springrest.dao package
+--
+Create @Repository classes
+
+4. create service class under com.springrest.service package
+--
+create @Service classes
+
+5. create Spring configuration under com.springrest.config package
+--
+config 1: WebConfig.java
+
+Create a web @Configuration class annotated with @EnableWebMvc and @ComponentScan as follows.
+
+config 2: AppConfig.java
+
+Create another @Configuration class to configure the Hibernate ORM with Spring MVC application. Annotate this class with @EnableTransactionManagement annotation to enable the transaction management.
+
+config 3: MyWebAppInitializer.java
+
+Create a MyWebAppInitializer class, which will replace our traditional web.xml, to initialize the Servlet container.
+
+The AbstractAnnotationConfigDispatcherServletInitializer class, implements the WebApplicationInitializer, is implemented in Servlet 3.0+ environments in order to configure the ServletContext programmatically. 
+
+6. create db.properties file under the src/main/resources folder
+--
+To define the MySQL database, hibernate and c3p0  connection pooling properties as follows.
+
+
+Build + Deploy + Run application
+Use the following maven commands to build, deploy and run Tomcat server.
+
+mvn clean install  (This command triggers war packaging)
+
+mvn tomcat7:run (This command run embedded tomcat and deploy war file automatically)
+
+You can refer this link to learn how to run the above commands in Eclipse IDE.
+
+In this example, we will use the POSTMAN tool (A Chrome App) to test our RESTful web services.
+
+
+
+POST request - http://localhost:8080/book
